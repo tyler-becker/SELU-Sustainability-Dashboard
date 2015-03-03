@@ -1,0 +1,52 @@
+/* ----------------------------------------
+ * Diagram Page css - Last Edit 11.26.14
+ * --------------------------------------*/
+.diagBody{
+	width: 1200px;
+	margin-top: 5em;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 5em;
+	padding-left: 5em;
+	color: white;
+	text-align: center;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.diag{
+	position: relative;
+	height: 525;
+	/*border: dotted 3px white;*/ 
+}
+
+#canvas1{
+	position: absolute;
+	left: 0; 
+	top: 0; 
+	z-index: 0; 
+	background-color: lightBlue; 
+}
+#canvas2{
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+	z-index: 1;
+}
+
+.slideControl{
+	padding-top: 5px;
+	padding-bottom: 5px; 
+	z-index: 2;
+	/*border: dotted 3px white; */
+}
+.info{
+	height: 525;
+	background-image: url("../images/halftone.png");
+	color: black;
+	font-size: 16px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.white{
+	color: white;
+    padding-left: 5em;
+}

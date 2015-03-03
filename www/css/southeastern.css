@@ -1,0 +1,66 @@
+/*----------------------------
+    Southeastern Page
+----------------------------*/
+@font-face{
+  font-family:Bebas;
+  src:url(../fonts/bebas.ttf);
+}
+@font-face{
+  font-family:Roboto;
+  src:url(../fonts/Roboto-Thin.ttf);
+}
+.row{
+  background-color: white;
+}
+.video{
+    padding-top:3em;
+    padding-bottom:2em;
+    height:50%;
+}
+.container-fluid{
+  background-color: white;
+  margin-top:0;
+  
+}
+.text{
+  margin:0;
+  font-family: 'Bebas';
+
+}
+.topRow{
+  padding-top:1em;
+}
+.topText{
+  padding-top:2em;
+  padding-bottom:2em;
+  
+}
+.sub{
+  padding-top:20px;
+}
+.mid{
+  padding-top:2em;
+}
+.southeastern{
+  overflow:inherit;
+  color: black;
+  font-family: 'Roboto';
+}
+.titleRow{
+  font-family: 'Bebas';
+  font-size: 50px;
+}
+.weMadeIt{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 14px;
+    color: black;
+}
+.fixIt{
+  background-image: url("../images/diagmonds.png");
+  padding-left: 2em;
+  margin-right: 0;
+}
+.white{
+  color: white;
+  padding-left: 5em;
+}

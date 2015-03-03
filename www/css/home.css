@@ -1,0 +1,148 @@
+/*-----------------------
+    Index Page
+-------------------------*/
+.mainBody{
+    color:black;
+}
+.rowAddTransparency{
+    background-color:rgba(203, 196, 220, 0.4);
+}
+
+.colInfo1{
+    font-size: 20px;
+    font-family:'Roboto';
+    color:white;
+}
+
+.rowImg{
+    padding-top:5em;
+    background-image: url(../images/treeEdited.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: cover;
+}
+
+/*=================
+    Derek Edits
+==================*/
+@font-face{
+    font-family:Bebas;
+    src:url(../fonts/bebas.ttf);
+}
+@font-face{
+    font-family:Roboto;
+    src:url(../fonts/Roboto-Thin.ttf);
+}
+h3{
+    font-family: 'Bebas';
+    font-size:20px;
+}
+p{
+    font-family:'Bebas';
+    font-size: 40px;
+    color: white;
+}
+p span { 
+    font-family: 'Bebas';
+    font-size: 40px;
+    color: white; 
+    font: bold 24px/45px Helvetica, Sans-Serif; 
+    letter-spacing: -1px;  
+    background-color:rgba(0, 0, 0, 0.7);
+ 
+}
+h1 span{
+    font-family:'Bebas';
+    color: white; 
+    font: bold 24px/45px Helvetica, Sans-Serif; 
+    letter-spacing: -1px;  
+    background-color:rgba(0, 0, 0, 0.7);
+    padding: 10px; 
+
+}
+.row{
+    background-color: white;
+    padding-left: 2%;
+}
+.fixIt{
+    background-color: transparent;
+}
+.colTitle{
+    text-align: center;
+    font-family: bebas;
+    src: url(fonts/BEBAS_.TTF);
+    font-size: 60px;
+}
+.weMadeIt{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 14px;
+    color: black;
+}
+.white{
+    color: white;
+    padding-left: 5em;
+}
+.center{
+    width: 25%;
+    margin: 0 auto;
+}
+
+/*===============
+    col edits
+===============*/
+
+.colTitle{
+    text-align: center;
+    font-family: 'Bebas';
+    font-size: 60px;
+}
+.colInfo1{
+    font-size: 20px;
+    font-family:'Roboto';
+    color:white;
+}
+.colPicCenter{
+    text-align: center;
+    background-color: white;
+    padding-left: 0;
+    margin-left: 0;
+}
+.rowAddTransparency{
+    background-color:rgba(203, 196, 220, 0.4);
+}
+
+/*-----------------------
+    WU stuff
+-------------------------*/
+#weather{
+    padding-top:1em;
+    color:black;
+    font-size:1.2em;
+}
+#weatherIcon{
+    padding-top:1em;
+}
+
+/*-----------------------
+    Chart Stuff
+-------------------------*/
+#chart_div
+{
+	background-color: white;
+	margin-right: auto;
+	margin-left: auto;
+	width:100%;
+	height:300px;
+}
+#animated_chart
+{
+	background-color: white;
+    margin-right: auto;
+    margin-left: auto;
+    width:100%;
+    height:300px;
+}
+
+.btn-container{
+    padding-top:2em;
+}

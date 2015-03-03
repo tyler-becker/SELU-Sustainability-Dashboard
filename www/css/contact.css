@@ -1,0 +1,20 @@
+/*CSS FOR THE CONTACT PAGE STUFF*/
+
+h3{
+	color:white;
+	text-align: center;
+	font-size:40px;
+}
+p{
+	font-size: 20px;
+}
+.col-lg-12{
+	text-align: center;
+}
+.imgResize {
+	width: 150px;
+	height: 150px;
+	margin-right: 50px;
+	margin-top: 10px;
+}
+

@@ -1,0 +1,31 @@
+
+SUSTAINABILITY API in PHP and MySQL
+
+	1. Use phpmodbus to connect to 
+		get the IP for each monitor
+		decide what registers to read
+		tech:
+		-> Solar Thermal
+		-> Photovoltaeic
+		-> Geo Thermal
+
+	2. Use crontab to update database
+		tables:
+		-> separate weather table
+			with foreign keys to other readings
+		-> every half hour, take readings of current energy output/offset
+		-> once per day, at midnight, total up energy production 
+			if(dateTime(hours) == 0)
+		-> once per month, total up monthly data
+			if(every 2nd of month)
+		-> once per week, total up values
+			if(dayOfWeek == sunday) 
+
+	3. GETs from the Slim API
+		-> get weather data
+		-> array for line chart
+			energy rate over time
+		-> array for bar chart
+			energy total over time (day, week, month, season)
+		-> current production (gauge)
+			link gauge to graph to show data from that reading

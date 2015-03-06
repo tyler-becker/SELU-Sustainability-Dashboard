@@ -1,22 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="dashboard" >
+<html lang="en" ng-app="dashboard">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<title>Sustainability Dashboard</title>
+		<link rel="stylesheet" href="css/site.css">
+		<title>Southeastern Dashboard</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-default" >
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="index.php">Home</a></li>
-				<li><a href="diagram.html">Diagram</a></li>
-				<li><a href="southeastern.html">Southeastern</a></li>
-			</ul>
-		</nav>
-
-		<div ui-view ></div>
-
+		<header class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<nav>
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.html">Home</a></li>
+						<li><a href="#">Solar Thermal</a></li>
+						<li><a href="#">Photovoltaic</a></li>
+						<li><a href="#">Geothermal</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<div id="main">
+			<div ui-view></div>
+		</div>
+		<footer>
+			<p><a href="contact.html"><b>Contact</a> Team Solis 2015</b></p>
+		</footer>
 		<script src="lib/angular.min.js"></script>
 		<script src="lib/angular-ui-router.min.js"></script>
 		<script src="lib/jquery-2.1.3.min.js"></script>

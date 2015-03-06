@@ -1,0 +1,85 @@
+/*-----------------------
+	DOM
+-------------------------*/
+body {
+	background-image: url('../images/diagmonds.png');
+    font-family: 'Bebas';
+}
+@font-face{
+    font-family: Bebas;
+    src: url(fonts/bebas.ttf);
+}
+@font-face{
+    font-family: Roboto;
+    src: url(fonts/Roboto-Thin.ttf);
+}
+header {
+	font-family: 'Roboto';
+	list-style-type: none;
+}
+footer {
+	font-family: 'Roboto';
+	color: white;
+	width: 1200px;
+	margin: 0 auto;
+	padding-left: 3em;
+}
+h3 {
+	font-family: 'Roboto';
+}
+#main {
+	width: 1200px;
+	margin: 0 auto;
+}
+.sub {
+	background-color: #f4f4f4;
+	padding: 15px;
+}
+
+/*-----------------------
+	NAVBAR
+-------------------------*/
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+	color: #000;  /*Sets the text hover color on navbar*/
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >
+a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: white; /*BACKGROUND color for active*/
+	background-color: #296b46;
+}
+.navbar-default {
+    background-color: #2E8B57;
+  	border-color: #2E8B57;
+    
+}
+.nav > li > a:hover,
+.nav > li > a:focus {
+    text-decoration: none;
+    background-color: silver; /*Change rollover cell color here*/
+}
+.navbar-default .navbar-nav > li > a {
+   	color: white; /*Change active text color here*/
+}
+
+/*-----------------------
+    MISC
+-------------------------*/
+#weather{
+    font-size: 1.2em;
+    padding-top: 1em;
+    color: black;
+}
+.hidden {
+	display: none;
+}
+.banner{
+    padding: 5em 15px 15px;
+    background-image: url(../images/treeEdited.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: cover;
+    color: #f4f4f4;
+}
+.banner-highlight {
+    background-color: rgba(0, 0, 0, 0.7);
+}

@@ -20,20 +20,19 @@ header {
 footer {
 	font-family: 'Roboto';
 	color: white;
-	width: 1200px;
+	width: 98em;
 	margin: 0 auto;
-	padding-left: 3em;
 }
 h3 {
 	font-family: 'Roboto';
 }
 #main {
-	width: 1200px;
+	width: 98em;
 	margin: 0 auto;
 }
 .sub {
 	background-color: #f4f4f4;
-	padding: 15px;
+	padding: 2%;
 }
 
 /*-----------------------
@@ -73,7 +72,7 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 	display: none;
 }
 .banner{
-    padding: 5em 15px 15px;
+    padding: 6% 2% 2%;
     background-image: url(../images/treeEdited.png);
     background-repeat: no-repeat;
     background-position: left top;

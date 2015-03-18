@@ -8,7 +8,11 @@ var app = angular.module('dashboard', ['ui.router'])
         url: '/home',
         templateUrl: 'views/test.html',
         controller: 'HomeCtrl'
-    });
+    })
+    .state('contact', {
+        url: '/contact',
+        templateUrl: 'views/contact.html'
+    });;
   $urlRouterProvider.otherwise('/home');
 })
 

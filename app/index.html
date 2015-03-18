@@ -11,12 +11,22 @@
 		<header class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<nav>
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.html">Home</a></li>
-						<li><a href="#">Solar Thermal</a></li>
-						<li><a href="#">Photovoltaic</a></li>
-						<li><a href="#">Geothermal</a></li>
-					</ul>
+					<div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dashboard-nav">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				    </div>
+				    <div id="dashboard-nav" class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="/home">Home</a></li>
+							<li><a href="#">Solar Thermal</a></li>
+							<li><a href="#">Photovoltaic</a></li>
+							<li><a href="#">Geothermal</a></li>
+						</ul>
+					</div>
 				</nav>
 			</div>
 		</header>
@@ -25,14 +35,16 @@
 		</div>
 		<footer>
 			<div class="container">
-				<p><a href="contact.html"><b>Contact</a> Team Solis 2015</b></p>
+				<p><a href="/contact"><b>Contact</a> Team Solis 2015</b></p>
 			</div>
 		</footer>
 		<script src="lib/angular.min.js"></script>
 		<script src="lib/angular-ui-router.min.js"></script>
 		<script src="lib/jquery-2.1.3.min.js"></script>
+		<script src="lib/bootstrap.min.js"></script>
 		<script src="lib/Chart.min.js"></script>
 		<script src="app.js"></script>
 		<script src="scripts/barChart.js"></script>
+		<script src="scripts/contactPanel.js"></script>
 	</body>
 </html>

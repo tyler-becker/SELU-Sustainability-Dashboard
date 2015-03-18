@@ -7,11 +7,11 @@ body {
 }
 @font-face{
     font-family: Bebas;
-    src: url(fonts/bebas.ttf);
+    src: url(../fonts/bebas.ttf);
 }
 @font-face{
     font-family: Roboto;
-    src: url(fonts/Roboto-Thin.ttf);
+    src: url(../fonts/Roboto-Thin.ttf);
 }
 header {
 	font-family: 'Roboto';
@@ -71,6 +71,10 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 .hidden {
 	display: none;
 }
+.center {
+    width: 50%;
+    margin: 0 auto;
+}
 .banner{
     padding: 6% 2% 2%;
     background-image: url(../images/treeEdited.png);
@@ -81,4 +85,12 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 }
 .banner-highlight {
     background-color: rgba(0, 0, 0, 0.7);
+}
+.contact {
+    color: white;
+    margin-top: 5em;
+}
+.img-resize {
+    width: 20em;
+    height: 20em;
 }

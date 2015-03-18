@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('dashboard', ['ui.router'])
+var app = angular.module('dashboard', ['ui.router', 'ngResource'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -32,6 +32,14 @@ var app = angular.module('dashboard', ['ui.router'])
   $urlRouterProvider.otherwise('/home');
 })
 
-.controller('HomeCtrl', function($scope) {
+.factory('chartService',function(){
+	return {
+		dailyReadings: [12, 13, 14, 15, 20]
+		//$resource('solar-dashboard/api/index.php/dailyReadings');
+	};
+})
+
+.controller('HomeCtrl', function($scope, chartService) {
 	$scope.message = 'we made it';
+	$scope.dailyReadings = 5;
 });

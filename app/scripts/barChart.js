@@ -4,11 +4,12 @@ app.directive('barChart', function(){
 	return {
 		restrict: 'A',
 		scope: {
-			energyTech: '=dashboard'
+			energyTech: '=',
+			apiData: '='
 		},
-		link: function(scope, element, attrs){
+		link: function(scope, element, attrs, data){
 			var ctx = element[0].getContext('2d');
-			var data = {
+		 data = {
 			    labels: ["January", "February", "March", "April", "May", "June", "July"],
 			    datasets: [
 			        {
@@ -17,7 +18,7 @@ app.directive('barChart', function(){
 			            strokeColor: "rgba(14,112,9,0.8)",
 			            highlightFill: "rgba(14,112,9,0.75)",
 			            highlightStroke: "rgba(14,112,9,1)",
-			            data: [65, 59, 80, 81, 56, 55, 40]
+			            data: [scope.apiData, 59, 80, 81, 56, 55, 40]
 			        },
 			        {
 			            label: "My Second dataset",

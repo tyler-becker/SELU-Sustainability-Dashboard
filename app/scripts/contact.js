@@ -10,7 +10,7 @@ app.directive('contactPane', function(){
 	}
 })
 
-.controller("ContactCtrl", function($scope) {
+.controller('ContactCtrl', function($scope) {
 	$scope.seth = { 
 		name: 'Seth Champagne',
 		role: 'Team Leader',

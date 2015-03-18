@@ -2,16 +2,16 @@
 	DOM
 -------------------------*/
 body {
-	background-image: url('../images/diagmonds.png');
+	background-image: url('images/diagmonds.png');
     font-family: 'Bebas';
 }
 @font-face{
     font-family: Bebas;
-    src: url(../fonts/bebas.ttf);
+    src: url(fonts/bebas.ttf);
 }
 @font-face{
     font-family: Roboto;
-    src: url(../fonts/Roboto-Thin.ttf);
+    src: url(fonts/Roboto-Thin.ttf);
 }
 header {
 	font-family: 'Roboto';
@@ -77,7 +77,7 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 }
 .banner{
     padding: 6% 2% 2%;
-    background-image: url(../images/treeEdited.png);
+    background-image: url(images/treeEdited.png);
     background-repeat: no-repeat;
     background-position: left top;
     background-size: cover;

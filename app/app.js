@@ -34,12 +34,26 @@ var app = angular.module('dashboard', ['ui.router', 'ngResource'])
 
 .factory('chartService',function(){
 	return {
-		dailyReadings: [12, 13, 14, 15, 20]
+		dailyReadings: [12, 13, 14, 15, 20, 50, 60]
 		//$resource('solar-dashboard/api/index.php/dailyReadings');
 	};
 })
 
 .controller('HomeCtrl', function($scope, chartService) {
 	$scope.message = 'we made it';
-	$scope.dailyReadings = 5;
+	$scope.dailyReadings = function() {
+        return{
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                    {
+                        label: "My First dataset",
+                        fillColor: "rgba(14,112,9,0.5)",
+                        strokeColor: "rgba(14,112,9,0.8)",
+                        highlightFill: "rgba(14,112,9,0.75)",
+                        highlightStroke: "rgba(14,112,9,1)",
+                        data: chartService.dailyReadings
+                    }
+                ]
+            }
+        }   
 });

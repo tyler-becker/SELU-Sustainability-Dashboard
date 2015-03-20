@@ -18,125 +18,81 @@ $app-> get('/currentProductionReadings','getCurrentProductionReadings');
 $app->run();
 
 
+
+function buildApiResponse($sql, $typeOfReading)
+{
+	try 
+	{
+		
+		$db = getDb();
+		$stmt = $db -> query($sql);
+
+		$readings = $stmt->fetchAll(PDO::FETCH_OBJ);
+		$db = null;
+		echo $typeOfReading . json_encode($readings) . '}';
+	
+	}
+
+
+	catch(PDOException $e) 
+	{
+		//error_log($e->getMessage(), 3, '/var/tmp/phperror.log'); //Write error log
+		echo '{"error":{"text":'. $e->getMessage() .'}}';
+		
+	}
+}
+
 //this function will return the daily readings as a JSON object...Needs to have query written for it
 function getDailyReadings()
 {
-	$sql = 'SELECT * tables blah blahhh';
-	$db = getDb();
-	$stmt = $db -> query($sql);
 
-	$readings = $stmt->fetchAll(PDO::FETCH_OBJ);
-	$db = null;
-	echo '{"dailyReadings": ' . json_encode($readings) . '}';
-} 
-	catch(PDOException $e) 
-	{
-	//error_log($e->getMessage(), 3, '/var/tmp/phperror.log'); //Write error log
-	echo '{"error":{"text":'. $e->getMessage() .'}}';
-	}
+	$query = '';
+	$typeOfReading = '{"dailyReadings": ';
+
+	buildApiResponse($query, $typeOfReading);
 
 
+}
 
-
-//This function returns weather readings as a JSON Object...Needs query written for it
-function getWeatherReadings()
+function getWeatherReadings($sql, $typeOfReading)
 {
-	$sql = 'SELECT * tables blah blahhh';
-	$db = getDb();
-	$stmt = $db -> query($sql);
+	$query = '';
+	$typeOfReading = '{"Weather Readings": ';
 
-	$readings = $stmt->fetchAll(PDO::FETCH_OBJ);
-	$db = null;
-	echo '{"Weather Readings": ' . json_encode($readings) . '}';
-} 
-	catch(PDOException $e) 
-	{
-	//error_log($e->getMessage(), 3, '/var/tmp/phperror.log'); //Write error log
-	echo '{"error":{"text":'. $e->getMessage() .'}}';
-	}
+	buildApiResponse($query, $typeOfReading);
 
+}
 
-
-
-//This function returns energy readings as a JSON Object...Needs query written for it
 function getEnergyReadings()
 {
-	$sql = 'SELECT * tables blah blahhh';
-	$db = getDb();
-	$stmt = $db -> query($sql);
+	$query = '';
+	$typeOfReading = '{"Energy Readings": ';
 
-	$readings = $stmt->fetchAll(PDO::FETCH_OBJ);
-	$db = null;
-	echo '{"Energy Readings": ' . json_encode($readings) . '}';
-} 
-	catch(PDOException $e) 
-	{
-	//error_log($e->getMessage(), 3, '/var/tmp/phperror.log'); //Write error log
-	echo '{"error":{"text":'. $e->getMessage() .'}}';
-	}
+	buildApiResponse($query, $typeOfReading);
 
 
+}
 
-//This function returns weekly readings as a JSON Object...Needs query written for it
 function getWeeklyReadings()
 {
-	$sql = 'SELECT * tables blah blahhh';
-	$db = getDb();
-	$stmt = $db -> query($sql);
 
-	$readings = $stmt->fetchAll(PDO::FETCH_OBJ);
-	$db = null;
-	echo '{"Weekly Readings": ' . json_encode($readings) . '}';
-} 
-	catch(PDOException $e) 
-	{
-	//error_log($e->getMessage(), 3, '/var/tmp/phperror.log'); //Write error log
-	echo '{"error":{"text":'. $e->getMessage() .'}}';
-	}
+	$query = '';
+	$typeOfReading = '{"Weekly Readings": ';
 
+buildApiResponse($query, $typeOfReading);
 
+}
 
-//This function returns monthly readings as a JSON Object...Needs query written for it
-function getMonthlyReadings()
+function getCurrentProductionReadings()
 {
-	$sql = 'SELECT * tables blah blahhh';
-	$db = getDb();
-	$stmt = $db -> query($sql);
+	
+	$query = '';
+	$typeOfReading = '{"Current Production Readings": ';
 
-	$readings = $stmt->fetchAll(PDO::FETCH_OBJ);
-	$db = null;
-	echo '{"Monthly Readings": ' . json_encode($readings) . '}';
-} 
-	catch(PDOException $e) 
-	{
-	//error_log($e->getMessage(), 3, '/var/tmp/phperror.log'); //Write error log
-	echo '{"error":{"text":'. $e->getMessage() .'}}';
-	}
+	buildApiResponse($query, $typeOfReading);
 
 
-
-//This function returns current production readings as a JSON Object...Needs query written for it
-	function getCurrentProductionReadings()
-{
-	$sql = 'SELECT * tables blah blahhh';
-	$db = getDb();
-	$stmt = $db -> query($sql);
-
-	$readings = $stmt->fetchAll(PDO::FETCH_OBJ);
-	$db = null;
-	echo '{"Monthly Readings": ' . json_encode($readings) . '}';
-} 
-	catch(PDOException $e) 
-	{
-	//error_log($e->getMessage(), 3, '/var/tmp/phperror.log'); //Write error log
-	echo '{"error":{"text":'. $e->getMessage() .'}}';
-	}
-
-
-
-
-
-
+}
 
 
 

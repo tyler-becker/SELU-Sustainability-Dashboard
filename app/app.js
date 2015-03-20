@@ -56,4 +56,21 @@ var app = angular.module('dashboard', ['ui.router', 'ngResource'])
                 ]
             }
         }   
+})
+
+.controller('SolarCtrl', function($scope) {
+    $scope.message='Ayyy lmao';
+})
+
+.controller('NavCtrl', function($scope, $location){
+    $scope.isActive = function (viewLocation){
+        return viewLocation === $location.path();
+    };
+})
+
+.controller('LoginCtrl', function($scope, $rootScope, AUTH_EVENTS, AuthService) {
+    $scope.credentials = {
+        username:'',
+        password:''
+    }
 });

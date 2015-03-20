@@ -1,0 +1,55 @@
+<html lang="en" ng-app="dashboard">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../site.css">
+		<title>Southeastern Dashboard</title>
+	</head>
+	<body>
+		<!-- Didn't style the page properly to see form and navbar, so it's commented out while I work on the form login.
+
+		<header class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<nav>
+					<div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dashboard-nav">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				    </div>
+				    <div id="dashboard-nav" class="collapse navbar-collapse" ng-controller ="NavCtrl">
+						<ul class="nav navbar-nav">
+							<li ng-class="{ active: isActive('/home') }"><a href="../#/home">Home</a></li>
+							<li ng-class="{ active: isActive('/solar') }"><a href="../#/solar">Solar Thermal</a></li>
+							<li ng-class="{ active: isActive('/photo') }"><a href="../#/photo">Photovoltaic</a></li>
+							<li ng-class="{ active: isActive('/geo') }"><a href="../#/geo">Geothermal</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+
+	-->
+			<div class = "container">
+				<div class="row">
+					<div class="col-md-12">
+						<form name="loginForm" ng-controller="LoginCtrl"
+								ng-submit="login(credentials)" novalidate>
+							<label for="username">Username:</label>
+							<input type="text" id="username"
+									ng-model="credentials.username">
+
+							<label for="password">Password:</label>
+							<input type="password" id="password"
+									ng-model="credentials.password">
+
+							<button type="submit">Login</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</body>
+</html>

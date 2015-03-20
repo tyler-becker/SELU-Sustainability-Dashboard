@@ -19,12 +19,12 @@
 				        <span class="icon-bar"></span>
 				      </button>
 				    </div>
-				    <div id="dashboard-nav" class="collapse navbar-collapse">
+				    <div id="dashboard-nav" class="collapse navbar-collapse" ng-controller ="NavCtrl">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="#/home">Home</a></li>
-							<li><a href="#/solar">Solar Thermal</a></li>
-							<li><a href="#/photo">Photovoltaic</a></li>
-							<li><a href="#/geo">Geothermal</a></li>
+							<li ng-class="{ active: isActive('/home') }"><a href="#/home">Home</a></li>
+							<li ng-class="{ active: isActive('/solar') }"><a href="#/solar">Solar Thermal</a></li>
+							<li ng-class="{ active: isActive('/photo') }"><a href="#/photo">Photovoltaic</a></li>
+							<li ng-class="{ active: isActive('/geo') }"><a href="#/geo">Geothermal</a></li>
 						</ul>
 					</div>
 				</nav>

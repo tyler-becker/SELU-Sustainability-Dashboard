@@ -32,11 +32,36 @@ var app = angular.module('dashboard', ['ui.router', 'ngResource'])
   $urlRouterProvider.otherwise('/home');
 })
 
+.constant('AUTH_EVENTS', {
+    loginSuccess: 'auth-login-success',
+    loginFailed: 'auth-login-failed',
+    logoutSuccess: 'auth-logout-success',
+    sessionTimeout: 'auth-session-timeout'
+})
+
+.constant('USER_ROLES', {
+    admin: 'admin'
+})
+
 .factory('chartService',function(){
 	return {
 		dailyReadings: [12, 13, 14, 15, 20, 50, 60]
 		//$resource('solar-dashboard/api/index.php/dailyReadings');
 	};
+})
+
+.factory('AuthService', function($http, Session) {
+    var authService = {};
+
+    authService.login = function (credentials) {
+        return $http
+        .post('/login', credentials)
+        .then(function (res){
+            Session.create(res.data.id, res.data.user.id,
+                            res.data.user.role);
+            return res.data.user;
+        });
+    };
 })
 
 .controller('HomeCtrl', function($scope, chartService) {
@@ -73,4 +98,13 @@ var app = angular.module('dashboard', ['ui.router', 'ngResource'])
         username:'',
         password:''
     }
+
+    $scope.login = function(credentials) {
+        AuthService.login(credentials).then(function (user) {
+            $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+            $scope.setCurrentUser(user);
+        }, function() {
+            $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+        });
+    };
 });

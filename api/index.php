@@ -13,6 +13,7 @@ $app-> get('/weatherReadings','getWeatherReadings');
 $app-> get('/energyReadings','getEnergyReadings');
 $app-> get('/weeklyReadings','getWeeklyReadings');
 $app-> get('/currentProductionReadings','getCurrentProductionReadings');
+$app-> get('/userLogin','getUserLogin');
 
 //Invokes that said function I believe
 $app->run();

@@ -2,7 +2,7 @@
 	DOM
 -------------------------*/
 body {
-	/*background-image: url('images/diagmonds.png');*/
+	background-image: url('images/diagmonds.png');
     font-family: 'Bebas';
 }
 @font-face{
@@ -19,17 +19,22 @@ header {
 }
 footer {
 	font-family: 'Roboto';
-	color: black;
+    color: white;
 	width: 98em;
 	margin: 0 auto;
 }
 h3 {
 	font-family: 'Roboto';
-    font-weight: bold;
+}
+ul {
+    font-size: 1.5em;
+    list-style-type: katakana;
 }
 #main {
 	width: 98em;
+    position: relative;
 	margin: 0 auto;
+    padding-top: 5em;
 }
 .sub {
 	background-color: #f4f4f4;
@@ -69,6 +74,9 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
     padding-top: 1em;
     color: black;
 }
+.add-margin {
+    margin-top: 5em;
+}
 .hidden {
 	display: none;
 }
@@ -89,9 +97,21 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 }
 .contact {
     color: white;
-    margin-top: 5em;
 }
 .img-resize {
     width: 20em;
     height: 20em;
+}
+#base {
+    position: absolute;
+    left: 0; 
+    top: 0; 
+    z-index: 0; 
+    background-color: lightBlue; 
+}
+#arrows {
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    z-index: 1;
 }

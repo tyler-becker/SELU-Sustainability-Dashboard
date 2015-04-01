@@ -3,7 +3,7 @@
 	$dbhost = "localhost";
 	$dbuser = "team1";
 	$dbpass = "67yuhjnm^&YUHJNM";
-	$dbname = "solarDB";
+	$dbname = "solarThermal";
 	$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 	//This will display an error if connection fails

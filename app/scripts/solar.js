@@ -234,8 +234,7 @@ app.controller('SolarCtrl', function($scope, Arrow, chartService) {
 	arrows.push(new Arrow.create(660, 500, ['u', 'r', 'd', 'r'], [420, 820, 500, 1000]));
 
 	$scope.chartTitle = 'Solar Data';
-	$scope.hideChart = false;
-	$scope.content = 'Data';
+	$scope.diagramTitle = 'Solar Thermal System';
 	$scope.scale = true;
 	$scope.arrows = arrows;
 	$scope.diagram = [
@@ -247,6 +246,7 @@ app.controller('SolarCtrl', function($scope, Arrow, chartService) {
 		monitor,
 		labels
 	];
+
 	$scope.dailyReadings = function () {
         return {
             labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -262,19 +262,17 @@ app.controller('SolarCtrl', function($scope, Arrow, chartService) {
             ]
         };
     };
-    $scope.swap = function () {
-    	$scope.hideChart = !$scope.hideChart;
-    	if ($scope.hideChart) {
-    		$scope.content = 'Diagram';
-    	} else {
-    		$scope.content = 'Data';
-    	}
-    };
-})
 
-.factory('chartService', function () {
-	return {
-		dailyReadings: [12, 13, 14, 15, 20, 50, 60]
-		//$resource('solar-dashboard/api/index.php/dailyReadings');
-	};
+    $scope.toggle = {
+		hideChart: false,
+		content: 'See Diagram',
+		swap: function () {
+	    	this.hideChart = !this.hideChart;
+	    	if (this.hideChart) {
+	    		this.content = 'See Data';
+	    	} else {
+	    		this.content = 'See Diagram';
+	    	}
+	    }
+    };
 });

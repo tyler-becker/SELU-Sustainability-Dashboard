@@ -1,34 +1,38 @@
 <div class="container">
-	<div class="row">
-		<div class="col-md-6">
-			<div class="center">
-				<button class="btn btn-default" type="button" ng-click="swap()">See {{content}}</button>
-			</div>
-		</div>
-	</div>
-	<div class="row" ng-hide="hideChart">
+	<div class="row" >
 		<div class="col-md-4">
-			<div class="sub">
-				<canvas doughnut-chart width="300" height="300"></canvas>
+			<div id="side-bar" class="sub">
+				<div class="col-md-12">
+					<h2>Energy Rate</h2>					
+					<canvas doughnut-chart class="center" width="250" height="250"></canvas>
+				</div>
+				<div class="col-md-12">
+					<label for="start-date">Start Date</label>
+					<br />
+					<input date-picker name="start-date" ng-model="startDate" type="datetime" placeholder="__ / __ / ____"></input>
+					<br />
+					<label for="end-date">End Date</label>
+					<br />
+					<input date-picker name="end-date" ng-model="endDate" type="datetime" placeholder="__ / __ / ____"></input>
+				</div>
+				<div class="col-md-12">
+					<br />
+					<button class="btn btn-success" type="button" ng-click="update()">Update</button>
+					<button class="btn btn-success" type="button" ng-click="toggle.swap()">{{toggle.content}}</button>
+				</div>
 			</div>
 		</div>
-		<div class="col-md-8">
-			<div class="sub">
-				<h2>{{chartTitle}}</h2>
-				<canvas bar-chart width="625" height="450"></canvas>
+		<div class="col-md-8" ng-hide="toggle.hideChart">
+			<div id="chart-area" class="sub">
+				<h1>{{chartTitle}}</h1>
+				<canvas class="chart" bar-chart width="725" height="525"></canvas>
 			</div>
 		</div>
-	</div>
-	<div class="row" ng-hide="!hideChart">
-		<div class="col-md-8">
-			<div id="#diagram">
-				<canvas id="base" diagram width="725" height="525"></canvas>
+		<div class="col-md-8" ng-hide="!toggle.hideChart">
+			<div id="diagram" class="sub">
+				<h1>{{diagramTitle}}</h1>
+				<canvas id="diagram-base" class="chart" diagram width="725" height="525"></canvas>
 				<canvas id="arrows" arrows width="725" height="525"></canvas>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="sub">
-				<canvas doughnut-chart width="300" height="300"></canvas>
 			</div>
 		</div>
 	</div>

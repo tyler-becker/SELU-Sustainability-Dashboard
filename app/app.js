@@ -32,41 +32,19 @@ var app = angular.module('dashboard', ['ui.router', 'ngResource'])
   $urlRouterProvider.otherwise('/home');
 })
 
-.controller('NavCtrl', function ($scope, $location){
-    $scope.isActive = function (viewLocation){
+.controller('NavCtrl', function ($scope, $location) {
+    $scope.isActive = function (viewLocation) {
         return viewLocation === $location.path();
     };
 })
 
-.controller('LoginCtrl', function($scope, $rootScope, AUTH_EVENTS, AuthService) {
+.controller('LoginCtrl', function ($scope, $rootScope, AUTH_EVENTS, AuthService) {
     $scope.credentials = {
         username:'',
         password:''
     }
 })
 
-.controller('HomeCtrl', function($scope, chartService) {
+.controller('HomeCtrl', function ($scope, chartService) {
 	$scope.message = 'we made it';   
-})
-
-.factory('Arrow', function () {
-    return {
-        // arrow constructor
-        create: function (x, y, dir, path) {
-            // (x,y) value to refernce for translate method
-            // the tip of the arrow
-            this.x = x
-            this.y = y;
-            this.init = {
-                x: x,
-                y: y
-            };
-            // direction that the arrow points ('u', 'd', 'l', 'r')
-            this.d = dir;
-            // tracks the path of the arrow (array of points)
-            this.path = path;
-            // path index tracker
-            this.i = dir.length;
-        }
-    };
 });

@@ -2,7 +2,7 @@
 	DOM
 -------------------------*/
 body {
-	background-image: url('images/diagmonds.png');
+	background-image: url('images/green_cup.png');
     font-family: 'Bebas';
 }
 @font-face{
@@ -19,7 +19,7 @@ header {
 }
 footer {
 	font-family: 'Roboto';
-    color: white;
+    color: #0E3E24;
 	width: 98em;
 	margin: 0 auto;
 }
@@ -43,7 +43,7 @@ label {
     padding-top: 5em;
 }
 .sub {
-	background-color: #f4f4f4;
+	background-color: #D7A03D;
 	padding: 1em;
 }
 
@@ -102,21 +102,19 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
     background-color: rgba(0, 0, 0, 0.7);
 }
 .contact {
-    color: white;
+    color: #0E3E24;
 }
 .img-resize {
     width: 20em;
     height: 20em;
 }
 .chart {
+    background-color: lightgrey;
     position: absolute;
     margin: auto;
     left: 0;
     right: 0;
     z-index: 0; 
-}
-#diagram-base {
-    background-color: lightblue;
 }
 #arrows {
     position: absolute; 

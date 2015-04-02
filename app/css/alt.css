@@ -2,7 +2,7 @@
 	DOM
 -------------------------*/
 body {
-	background-image: url('images/green_cup.png');
+	background-image: url('../images/green_cup.png');
     font-family: 'Bebas';
 }
 @font-face{

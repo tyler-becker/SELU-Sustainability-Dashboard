@@ -1,4 +1,3 @@
-'use strict';
 
 app.directive('diagram', function() {
 	return {

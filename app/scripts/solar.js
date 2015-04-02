@@ -1,6 +1,5 @@
-'use strict';
 
-app.controller('SolarCtrl', function($scope, Arrow, chartService) {
+app.controller('SolarCtrl', function($scope, Arrow, solarData) {
 	var arrows = [],
 		solarPanel = {
 			lineWidth: 3,
@@ -49,30 +48,30 @@ app.controller('SolarCtrl', function($scope, Arrow, chartService) {
 		},
 		heatExchanger = {
 			draw: function (ctx) {	
-				ctx.shadowColor = "white";
-				ctx.fillStyle = "firebrick";
+				ctx.shadowColor = 'white';
+				ctx.fillStyle = 'firebrick';
 				ctx.fillRect(260, 320, 80, 60);
 			}
 		},
 		buildingOutline = {
 			draw: function (ctx) {
 				ctx.scale(3/4, 3/4);
-				ctx.fillStyle = "crimson";
+				ctx.fillStyle = 'crimson';
 				ctx.fillRect(100, 200, 1500, 1500);
-				ctx.fillStyle = "gainsboro";
+				ctx.fillStyle = 'gainsboro';
 				ctx.fillRect(150, 250, 1500, 1500);						
 			}
 		},
 		heaters = {
 			draw: function (ctx) {
 				// Brain Armstrong
-				ctx.fillStyle = "moccasin";
-				ctx.strokeStyle = "dimGray";
+				ctx.fillStyle = 'moccasin';
+				ctx.strokeStyle = 'dimGray';
 				ctx.fillRect(800, 480, 40, 40);
 				ctx.strokeRect(800, 480, 40, 40);
 
 				// lochinar armour
-				ctx.fillStyle = "black";
+				ctx.fillStyle = 'black';
 				ctx.fillRect(730, 600, 20, 80);
 				ctx.fillRect(770, 600, 20, 80);						
 			}
@@ -80,18 +79,18 @@ app.controller('SolarCtrl', function($scope, Arrow, chartService) {
 		monitor = {
 			draw: function (ctx) {
 				// storage tanks
-				ctx.fillStyle = "gray";
+				ctx.fillStyle = 'gray';
 				ctx.fillRect(400, 500, 100, 180);
 				ctx.fillRect(600, 500, 100, 180);
 
-				ctx.fillStyle = "moccasin";
-				ctx.strokeStyle = "black";
+				ctx.fillStyle = 'moccasin';
+				ctx.strokeStyle = 'black';
 				ctx.lineWidth = 3;
 
 				ctx.fillRect(240, 420, 40, 60);
 				ctx.strokeRect(240, 420, 40, 60);
 
-				ctx.strokeStyle = "mediumSeaGreen";
+				ctx.strokeStyle = 'mediumSeaGreen';
 
 				ctx.beginPath();
 				ctx.moveTo(280, 440);
@@ -111,33 +110,33 @@ app.controller('SolarCtrl', function($scope, Arrow, chartService) {
 				// http://jsfiddle.net/DKcpS/1/
 				var text, w;
 
-				ctx.font = "bold 14px Lucida Console";
-				ctx.textBaseline = "center"; 
-				ctx.fillStyle = "black";
+				ctx.font = 'bold 14px Lucida Console';
+				ctx.textBaseline = 'center'; 
+				ctx.fillStyle = 'black';
 
-				ctx.fillText("To Pool--> ", 860, 480);
+				ctx.fillText('To Pool--> ', 860, 480);
 
-				text = "Heat Exchanger";
+				text = 'Heat Exchanger';
 				w = ctx.measureText(text).width;
 				ctx.fillText(text, 300-(w/2), 310);
 
-				text = "Onicon Monitor";
+				text = 'Onicon Monitor';
 				w = ctx.measureText(text).width;
 				ctx.fillText(text, 270-(w/2), 500);
 
-				text = "Solar Panels";
+				text = 'Solar Panels';
 				w = ctx.measureText(text).width;
 				ctx.fillText(text, 300-(w/2), 90);
 
-				text = "<--Storage Tanks-->";
+				text = '<--Storage Tanks-->';
 				w = ctx.measureText(text).width;
 				ctx.fillText(text, 550-(w/2), 580);
 
-				text = "<--Water Heaters";
+				text = '<--Water Heaters';
 				w = ctx.measureText(text).width;
 				ctx.fillText(text, 860-(w/2), 650);
 
-				text = "Cold Tap Water";
+				text = 'Cold Tap Water';
 				w = ctx.measureText(text).width;
 				ctx.fillText(text, 320-(w/2), 600);
 			}
@@ -146,7 +145,7 @@ app.controller('SolarCtrl', function($scope, Arrow, chartService) {
 			draw: function (ctx) {
 				// cold water input
 				ctx.lineWidth = 5;
-				ctx.strokeStyle = "blue";
+				ctx.strokeStyle = 'blue';
 				ctx.beginPath();
 				ctx.moveTo(280, 800);
 				ctx.lineTo(280, 620);
@@ -154,7 +153,7 @@ app.controller('SolarCtrl', function($scope, Arrow, chartService) {
 				ctx.stroke();
 
 				// first input pipe
-				ctx.strokeStyle = "dodgerBlue";
+				ctx.strokeStyle = 'dodgerBlue';
 				ctx.beginPath();
 				ctx.moveTo(200, 180);
 				ctx.lineTo(200, 360);
@@ -178,7 +177,7 @@ app.controller('SolarCtrl', function($scope, Arrow, chartService) {
 				ctx.stroke();
 
 				// first output pipe
-				ctx.strokeStyle = "red";
+				ctx.strokeStyle = 'red';
 				ctx.beginPath();
 				ctx.moveTo(400, 180);
 				ctx.lineTo(400, 280);
@@ -247,17 +246,36 @@ app.controller('SolarCtrl', function($scope, Arrow, chartService) {
 		labels
 	];
 
+	$scope.update = function () {
+		var valid = !!$('#start-date').val(),
+			startDate = $('#start-date').val().split('/'),
+			endDate = $('#end-date').val().split('/'),
+			start = startDate[2] + '-' + startDate[0] + '-' + startDate[1],
+			end = endDate[2] + '-' + endDate[0] + '-' + endDate[1];
+
+		// console.log(start);
+		// console.log(end);
+		// console.log(solarData.test.woo);
+		
+		if (valid) {
+			console.log(solarData.dailyReadings(start, end));
+		} else {
+			console.log('select date');
+		}
+
+	};
+
 	$scope.dailyReadings = function () {
         return {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
                 {
-                    label: "My First dataset",
-                    fillColor: "rgba(14,112,9,0.5)",
-                    strokeColor: "rgba(14,112,9,0.8)",
-                    highlightFill: "rgba(14,112,9,0.75)",
-                    highlightStroke: "rgba(14,112,9,1)",
-                    data: chartService.dailyReadings
+                    label: 'My First dataset',
+                    fillColor: 'rgba(14,112,9,0.5)',
+                    strokeColor: 'rgba(14,112,9,0.8)',
+                    highlightFill: 'rgba(14,112,9,0.75)',
+                    highlightStroke: 'rgba(14,112,9,1)',
+                    data: solarData.data
                 }
             ]
         };

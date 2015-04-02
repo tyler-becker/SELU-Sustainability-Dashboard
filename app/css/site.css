@@ -2,7 +2,7 @@
 	DOM
 -------------------------*/
 body {
-	background-image: url('images/diagmonds.png');
+	background-image: url('../images/diagmonds.png');
     font-family: 'Bebas';
 }
 @font-face{

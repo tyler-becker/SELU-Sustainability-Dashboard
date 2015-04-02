@@ -5,10 +5,10 @@
 
 	$energyRate = $output[0];
 	$energyTotal = ($output[3]*100000) + ($output[2]*1000) + ($output[1]);
-	$kwh = ($output[2]*1000);
+	$kwh = ($output[1]*1000);
 
 
-	$query = "INSERT INTO monitorReadings (btuTotal, kwh, literRate, ) VALUES({$btuTotal},{$kwh}, {$lPh}, );";
+	$query = "INSERT INTO solarThermal (btuTotal, kwh, literRate, supplyTemp, returnTemp, volumeTotal, ) VALUES({$btuTotal}, {$kwh}, {$lPh}, {$supplyTemp}, {$returnTemp}, {$volumeTotal} );";
 
 	$result = mysqli_query($connection, $query) or die("mysql makes me cry");
 

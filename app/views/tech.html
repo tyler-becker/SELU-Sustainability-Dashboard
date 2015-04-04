@@ -9,11 +9,11 @@
 				<div class="col-md-12">
 					<label for="start-date">Start Date</label>
 					<br />
-					<input id="start-date" date-picker name="start-date" ng-model="startDate" type="datetime" placeholder="__ / __ / ____"></input>
+					<input date-picker name="start-date" ng-model="startDate" type="datetime" placeholder="__ / __ / ____"></input>
 					<br />
 					<label for="end-date">End Date</label>
 					<br />
-					<input id="end-date" date-picker name="end-date" ng-model="endDate" type="datetime" placeholder="__ / __ / ____"></input>
+					<input date-picker name="end-date" ng-model="endDate" type="datetime" placeholder="__ / __ / ____"></input>
 				</div>
 				<div class="col-md-12">
 					<br />
@@ -25,7 +25,9 @@
 		<div class="col-md-8" ng-hide="toggle.hideChart">
 			<div id="chart-area" class="sub">
 				<h1>{{chartTitle}}</h1>
-				<canvas class="chart" bar-chart width="725" height="525"></canvas>
+				<!-- <h4 id="y-axis">{{yAxis}}</h4> -->
+				<canvas class="chart" bar-chart width="625" height="500"></canvas>
+				<!-- <h4 id="x-axis">{{xAxis}}</h4> -->
 			</div>
 		</div>
 		<div class="col-md-8" ng-hide="!toggle.hideChart">

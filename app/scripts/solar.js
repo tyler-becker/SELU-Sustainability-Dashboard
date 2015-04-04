@@ -232,7 +232,6 @@ app.controller('SolarCtrl', function($scope, Arrow, solarData) {
 	// to pool pipe
 	arrows.push(new Arrow.create(660, 500, ['u', 'r', 'd', 'r'], [420, 820, 500, 1000]));
 
-	$scope.chartTitle = 'Solar Data';
 	$scope.diagramTitle = 'Solar Thermal System';
 	$scope.scale = true;
 	$scope.arrows = arrows;
@@ -246,40 +245,45 @@ app.controller('SolarCtrl', function($scope, Arrow, solarData) {
 		labels
 	];
 
-	$scope.update = function () {
-		var valid = !!$('#start-date').val(),
-			startDate = $('#start-date').val().split('/'),
-			endDate = $('#end-date').val().split('/'),
-			start = startDate[2] + '-' + startDate[0] + '-' + startDate[1],
-			end = endDate[2] + '-' + endDate[0] + '-' + endDate[1];
-
-		// console.log(start);
-		// console.log(end);
-		// console.log(solarData.test.woo);
-		
-		if (valid) {
-			console.log(solarData.dailyReadings(start, end));
-		} else {
-			console.log('select date');
-		}
-
+	// chart stuff
+	$scope.chartTitle = 'Solar Data';
+	$scope.yAxis = 'kwh';
+	$scope.xAxis = 'Date';
+	$scope.startDate = '2015-03-01';
+	$scope.endDate = '2015-03-07';
+	$scope.chartCtrl = {
+		data: {
+	        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+	        datasets: [
+	            {
+	                label: 'we made it',
+	                fillColor: 'rgba(14,112,9,0.5)',
+	                strokeColor: 'rgba(14,112,9,0.8)',
+	                highlightFill: 'rgba(14,112,9,0.75)',
+	                highlightStroke: 'rgba(14,112,9,1)',
+	                data: solarData.data
+	            }
+	        ]
+	    }
 	};
+	$scope.update = function () {
+		var newLabels = [],
+			newData = [],
+			data = solarData.dailyReadings($scope.startDate, $scope.endDate)
+			
+		data.$promise.then(function (response) {
+			response.dailyReadings.forEach(function (e, i, arr) {
+				newLabels.push(e.dateRead.split(' ')[0]);
+				newData.push(e.kwh);
+			});
 
-	$scope.dailyReadings = function () {
-        return {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [
-                {
-                    label: 'My First dataset',
-                    fillColor: 'rgba(14,112,9,0.5)',
-                    strokeColor: 'rgba(14,112,9,0.8)',
-                    highlightFill: 'rgba(14,112,9,0.75)',
-                    highlightStroke: 'rgba(14,112,9,1)',
-                    data: solarData.data
-                }
-            ]
-        };
-    };
+			$scope.chartCtrl.data.labels = newLabels;
+			$scope.chartCtrl.data.datasets[0].data = newData;
+			$scope.chartCtrl.update();
+		}, function (response) {
+			console.log('it broke');
+		});
+	};
 
     $scope.toggle = {
 		hideChart: false,

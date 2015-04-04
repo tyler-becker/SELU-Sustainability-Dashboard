@@ -92,7 +92,7 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 }
 .banner{
     padding: 6% 2% 2%;
-    background-image: url(images/treeEdited.png);
+    background-image: url(../images/treeEdited.png);
     background-repeat: no-repeat;
     background-position: left top;
     background-size: cover;
@@ -107,6 +107,15 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 .img-resize {
     width: 20em;
     height: 20em;
+}
+#y-axis {
+    float: left;
+    margin-top: auto;
+    transform: rotate(90deg);
+    transform-origin: left top 0;
+}
+#x-axis {
+    margin: auto;
 }
 .chart {
     background-color: lightgrey;

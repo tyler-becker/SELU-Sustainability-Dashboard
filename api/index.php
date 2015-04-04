@@ -1,4 +1,4 @@
-<?php
+<?php 
 // require 'Slim/Slim.php'
 // slim\Slim::registerAutoLoader();
 // $app = new Slim();
@@ -50,14 +50,10 @@ function getDailyReadings()
 	$end = $app->request()->params('end');
 
 	$query = 'SELECT * FROM dailyReadings 
-		 	  WHERE (dateRead BETWEEN "$start" AND "$end") 
-		 	  ORDER BY dateRead DESC';
+		 	  WHERE (dateRead BETWEEN "'.$start.'" AND "'.$end.'")';
 	$typeOfReading = '{"dailyReadings": ';
 
 	buildApiResponse($query, $typeOfReading);
-
-	//echo '{"start":' . json_encode($start) . ',"end":' . json_encode($end) . '}';
-	//echo '{"woo":' . json_encode('we made it') . '}';
 }
 
 function getWeatherReadings()
@@ -74,6 +70,7 @@ function getEnergyReadings()
 	$typeOfReading = '{"Energy Readings": ';
 
 	buildApiResponse($query, $typeOfReading);
+}
 
 function getWeeklyReadings()
 {
@@ -90,3 +87,5 @@ function getCurrentProductionReadings()
 
 	buildApiResponse($query, $typeOfReading);
 }
+
+?>

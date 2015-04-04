@@ -18,9 +18,9 @@ app.directive('diagram', function() {
 	return {
 		restrict: 'A',
 		scope: false,
-		link: function (scope, element, attrs, data) {
+		link: function (scope, element, attrs) {
 			var ctx = element[0].getContext('2d'),
-				data = scope.dailyReadings(),
+				//data = scope.dailyReadings(),
 				options = {
 				    //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
 				    scaleBeginAtZero : true,
@@ -55,7 +55,13 @@ app.directive('diagram', function() {
 				    //String - A legend template
 				    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 				},
-				myBarChart = new Chart(ctx).Bar(data, options);
+				chart = new Chart(ctx),
+				myChart = chart.Bar(scope.chartCtrl.data, options);
+
+			scope.chartCtrl.update = function () {
+				myChart.destroy();
+				chart.Bar(scope.chartCtrl.data, options);
+			};
 
 			$('#chart-area, #side-bar, #diagram')
 				.height($('#chart-area').height() + $('.chart').height());
@@ -67,7 +73,7 @@ app.directive('diagram', function() {
 	return {
 		restrict: 'A',
 		scope: false,
-		link: function (scope, element, attrs, data) {
+		link: function (scope, element, attrs) {
 			var ctx = element[0].getContext('2d'),
 				data = [
 				    {
@@ -221,11 +227,22 @@ app.directive('diagram', function() {
 })
 
 .directive('datePicker', function () {
+	// http://www.abequar.net/posts/jquery-ui-datepicker-with-angularjs
 	return {
 		restrict: 'A',
+		require : 'ngModel',
 		scope: false,
-		link: function (scope, element, attrs, data) {
-			$(element[0]).datepicker();
+		link: function (scope, element, attrs, ngModelCtrl) {
+			$(function () {
+                $(element).datepicker({
+                    dateFormat: 'yy-mm-dd',
+                    onSelect: function (date) {
+                        scope.$apply(function () {
+                            ngModelCtrl.$setViewValue(date);
+                        });
+                    }
+                });
+            });
 		}
 	}
 });

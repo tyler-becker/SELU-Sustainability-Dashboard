@@ -13,6 +13,14 @@ $app-> get('/weatherReadings','getWeatherReadings');
 $app-> get('/energyReadings','getEnergyReadings');
 $app-> get('/weeklyReadings','getWeeklyReadings');
 $app-> get('/currentProductionReadings','getCurrentProductionReadings');
+$app-> get('/queryBetweenTwoPoints/:one/:two', function($one, $two)
+	{
+
+		$query = 'SELECT kwh FROM solarThermal WHERE dateRead BETWEEN '.$one.' AND '.$two;
+		$typeOfReading = '{"Quired between "'.$one.' and '.$two;
+
+
+	});
 
 //Invokes that said function I believe
 $app->run();
@@ -76,7 +84,7 @@ function getEnergyReadings()
 function getWeeklyReadings()
 {
 
-	$query = '';
+	$query = 'SELECT weather FROM solarThermal where ';
 	$typeOfReading = '{"Weekly Readings": ';
 
 buildApiResponse($query, $typeOfReading);
@@ -86,13 +94,14 @@ buildApiResponse($query, $typeOfReading);
 function getCurrentProductionReadings()
 {
 	
-	$query = '';
+	$query = 'SELECT btuTotal FROM solarThermal where dateRead BETWEEN CURDATE() 00:00:00 AND CURDATE 23:59:59';
 	$typeOfReading = '{"Current Production Readings": ';
 
 	buildApiResponse($query, $typeOfReading);
 
 
 }
+
 
 
 

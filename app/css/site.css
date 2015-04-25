@@ -2,7 +2,7 @@
 	DOM
 -------------------------*/
 body {
-	background-image: url('images/green_cup.png');
+	background-image: url('../images/diagmonds.png');
     font-family: 'Bebas';
 }
 @font-face{
@@ -19,7 +19,7 @@ header {
 }
 footer {
 	font-family: 'Roboto';
-    color: #0E3E24;
+    color: white;
 	width: 98em;
 	margin: 0 auto;
 }
@@ -43,7 +43,7 @@ label {
     padding-top: 5em;
 }
 .sub {
-	background-color: #D7A03D;
+	background-color: #f4f4f4;
 	padding: 1em;
 }
 
@@ -92,7 +92,7 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 }
 .banner{
     padding: 6% 2% 2%;
-    background-image: url(images/treeEdited.png);
+    background-image: url(../images/treeEdited.png);
     background-repeat: no-repeat;
     background-position: left top;
     background-size: cover;
@@ -102,19 +102,29 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
     background-color: rgba(0, 0, 0, 0.7);
 }
 .contact {
-    color: #0E3E24;
+    color: white;
 }
 .img-resize {
     width: 20em;
     height: 20em;
 }
+#y-axis {
+    float: left;
+    transform: rotate(90deg);
+    transform-origin: left top 0;
+}
+#x-axis {
+    float: center;
+}
 .chart {
-    background-color: lightgrey;
     position: absolute;
     margin: auto;
     left: 0;
     right: 0;
     z-index: 0; 
+}
+#diagram-base {
+    background-color: lightblue;
 }
 #arrows {
     position: absolute; 

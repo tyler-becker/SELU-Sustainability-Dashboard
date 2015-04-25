@@ -1,75 +1,71 @@
 <?php
+// require 'Slim/Slim.php'
+// slim\Slim::registerAutoLoader();
+// $app = new Slim();
+
 require 'dbConnect.php';
-require 'Slim/Slim.php'
+require 'vendor/autoload.php';
 
-\Slim\SLim::registerAutoLoader();
-
-$app = new Slim();
-
+$app = new \Slim\Slim();
 
 //If the url matchs a certain word itll go to the function specified
-$app-> get('/dailyReadings','getDailyReadings');
+$app-> get('/getTest','getTest');
+$app-> get('/dailyReadings', 'getDailyReadings');
 $app-> get('/weatherReadings','getWeatherReadings');
 $app-> get('/energyReadings','getEnergyReadings');
 $app-> get('/weeklyReadings','getWeeklyReadings');
 $app-> get('/currentProductionReadings','getCurrentProductionReadings');
 
-$app-> get('/queryBetweenTwoPoints/:one/:two', function($one, $two)
-	{
-
-		$query = 'SELECT kwh FROM solarThermal WHERE dateRead BETWEEN '.$one.' AND '.$two;
-		$typeOfReading = '{"Quired between "'.$one.' and '.$two;
-
-
-	});
-
 //Invokes that said function I believe
 $app->run();
-
-
 
 function buildApiResponse($sql, $typeOfReading)
 {
 	try 
 	{
-		
 		$db = getDb();
 		$stmt = $db -> query($sql);
 
 		$readings = $stmt->fetchAll(PDO::FETCH_OBJ);
 		$db = null;
 		echo $typeOfReading . json_encode($readings) . '}';
-	
 	}
-
-
 	catch(PDOException $e) 
 	{
 		//error_log($e->getMessage(), 3, '/var/tmp/phperror.log'); //Write error log
 		echo '{"error":{"text":'. $e->getMessage() .'}}';
-		
 	}
+}
+
+function getTest () {
+	echo '{"woo":' . json_encode('we made it') . '}';
 }
 
 //this function will return the daily readings as a JSON object...Needs to have query written for it
 function getDailyReadings()
 {
+	// get params from query string
+	$app = \Slim\Slim::getInstance();
+	$start = $app->request()->params('start');
+	$end = $app->request()->params('end');
 
-	$query = '';
+	$query = 'SELECT * FROM dailyReadings 
+		 	  WHERE (dateRead BETWEEN "$start" AND "$end") 
+		 	  ORDER BY dateRead DESC';
 	$typeOfReading = '{"dailyReadings": ';
 
 	buildApiResponse($query, $typeOfReading);
 
-
+	//echo '{"start":' . json_encode($start) . ',"end":' . json_encode($end) . '}';
+	//echo '{"woo":' . json_encode('we made it') . '}';
 }
 
-function getWeatherReadings($sql, $typeOfReading)
+function getWeatherReadings()
 {
 	$query = '';
 	$typeOfReading = '{"Weather Readings": ';
 
 	buildApiResponse($query, $typeOfReading);
-
 }
 
 function getEnergyReadings()
@@ -79,31 +75,18 @@ function getEnergyReadings()
 
 	buildApiResponse($query, $typeOfReading);
 
-
-}
-
 function getWeeklyReadings()
 {
-
-	$query = 'SELECT weather FROM solarThermal where ';
+	$query = '';
 	$typeOfReading = '{"Weekly Readings": ';
 
-buildApiResponse($query, $typeOfReading);
-
+	buildApiResponse($query, $typeOfReading);
 }
 
 function getCurrentProductionReadings()
 {
-	
-	$query = 'SELECT btuTotal FROM solarThermal where dateRead BETWEEN CURDATE() 00:00:00 AND CURDATE 23:59:59';
+	$query = '';
 	$typeOfReading = '{"Current Production Readings": ';
 
 	buildApiResponse($query, $typeOfReading);
-
-
 }
-
-
-
-
-?>

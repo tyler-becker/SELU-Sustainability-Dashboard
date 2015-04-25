@@ -1,9 +1,14 @@
-'use strict';
 
-app.factory('chartService', function () {
+app.factory('solarData', function ($resource) {
+    var dailyReadings = function (start, end) {
+            var apiCall = $resource('../api/index.php/dailyReadings?start=:startDate&end=:endDate', 
+                {startDate: start, endDate: end});
+            return apiCall.get();
+        };
 	return {
-		dailyReadings: [12, 13, 14, 15, 20, 50, 60]
-		//$resource('solar-dashboard/api/index.php/dailyReadings');
+		data: [12, 13, 14, 15, 20, 50, 60],
+        test: $resource('../api/index.php/getTest').get(),
+        dailyReadings: dailyReadings
 	};
 })
 

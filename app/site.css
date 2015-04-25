@@ -1,0 +1,117 @@
+/*-----------------------
+	DOM
+-------------------------*/
+body {
+	background-image: url('images/diagmonds.png');
+    font-family: 'Bebas';
+}
+@font-face{
+    font-family: Bebas;
+    src: url(fonts/bebas.ttf);
+}
+@font-face{
+    font-family: Roboto;
+    src: url(fonts/Roboto-Thin.ttf);
+}
+header {
+	font-family: 'Roboto';
+	list-style-type: none;
+}
+footer {
+	font-family: 'Roboto';
+    color: white;
+	width: 98em;
+	margin: 0 auto;
+}
+h3 {
+	font-family: 'Roboto';
+}
+ul {
+    font-size: 1.5em;
+}
+#main {
+	width: 98em;
+    position: relative;
+	margin: 0 auto;
+    padding-top: 5em;
+}
+.sub {
+	background-color: #f4f4f4;
+	padding: 2%;
+}
+
+/*-----------------------
+	NAVBAR
+-------------------------*/
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+	color: #000;  /*Sets the text hover color on navbar*/
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >
+a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: white; /*BACKGROUND color for active*/
+	background-color: #296b46;
+}
+.navbar-default {
+    background-color: #2E8B57;
+  	border-color: #2E8B57;
+    
+}
+.nav > li > a:hover,
+.nav > li > a:focus {
+    text-decoration: none;
+    background-color: silver; /*Change rollover cell color here*/
+}
+.navbar-default .navbar-nav > li > a {
+   	color: white; /*Change active text color here*/
+}
+
+/*-----------------------
+    MISC
+-------------------------*/
+#weather{
+    font-size: 1.2em;
+    padding-top: 1em;
+    color: black;
+}
+.add-margin {
+    margin-top: 5em;
+}
+.hidden {
+	display: none;
+}
+.center {
+    width: 50%;
+    margin: 0 auto;
+}
+.banner{
+    padding: 6% 2% 2%;
+    background-image: url(images/treeEdited.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: cover;
+    color: #f4f4f4;
+}
+.banner-highlight {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.contact {
+    color: white;
+}
+.img-resize {
+    width: 20em;
+    height: 20em;
+}
+#base {
+    position: absolute;
+    left: 0; 
+    top: 0; 
+    z-index: 0; 
+    background-color: lightBlue; 
+}
+#arrows {
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    z-index: 1;
+}
+

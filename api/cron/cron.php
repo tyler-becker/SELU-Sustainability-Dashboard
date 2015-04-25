@@ -1,5 +1,5 @@
 <?php
-	include 'dbConnect.php';
+	include '../dbConnect.php';
 	include 'wu.php';
 	include 'modbus.php';
 

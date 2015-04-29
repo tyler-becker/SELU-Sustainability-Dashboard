@@ -50,8 +50,7 @@ function getDailyReadings()
 	$end = $app->request()->params('end');
 
 	$query = 'SELECT * FROM dailyReadings 
-		 	  WHERE (dateRead BETWEEN "$start" AND "$end") 
-		 	  ORDER BY dateRead DESC';
+		 	  WHERE (DATE(dateRead) BETWEEN "'.$start.'" AND "'.$end.'")';
 	$typeOfReading = '{"dailyReadings": ';
 
 	buildApiResponse($query, $typeOfReading);

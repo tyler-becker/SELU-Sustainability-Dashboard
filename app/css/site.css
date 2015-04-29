@@ -2,7 +2,7 @@
 	DOM
 -------------------------*/
 body {
-	background-image: url('../images/diagmonds.png');
+	background-image: url('../images/green_cup.png');
     font-family: 'Bebas';
 }
 @font-face{
@@ -19,11 +19,10 @@ header {
 }
 footer {
 	font-family: 'Roboto';
-    color: white;
-	width: 98em;
+    width: 98em;
 	margin: 0 auto;
 }
-h1 {
+h1, h2{
     margin-top: 0;
 }
 h3 {
@@ -87,8 +86,12 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 	display: none;
 }
 .center {
-    width: 50%;
+    display: block;
+    width: 75%;
     margin: 0 auto;
+}
+.inputs {
+    height: 4em;
 }
 .banner{
     padding: 6% 2% 2%;
@@ -107,14 +110,6 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 .img-resize {
     width: 20em;
     height: 20em;
-}
-#y-axis {
-    float: left;
-    transform: rotate(90deg);
-    transform-origin: left top 0;
-}
-#x-axis {
-    float: center;
 }
 .chart {
     position: absolute;
@@ -135,4 +130,4 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 }
 
 
-/* #0E3E24 #764198 #2E8B57 #584014 #D7A03D */
+/* dark:#0E3E24 purple:#764198 green:#2E8B57 brown:#584014 gold:#D7A03D */

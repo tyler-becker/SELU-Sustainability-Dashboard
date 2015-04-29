@@ -1,6 +1,7 @@
 
 app.controller('SolarCtrl', function($scope, Arrow, solarData) {
 	var arrows = [],
+		d = new Date(),
 		solarPanel = {
 			lineWidth: 3,
 			lineJoin: 'round',
@@ -232,26 +233,25 @@ app.controller('SolarCtrl', function($scope, Arrow, solarData) {
 	// to pool pipe
 	arrows.push(new Arrow.create(660, 500, ['u', 'r', 'd', 'r'], [420, 820, 500, 1000]));
 
+	$scope.weather = {
+		text: 'Hammond: 72.3°F Mostly Cloudy',
+		src: 'http://icons.wxug.com/i/c/k/nt_mostlycloudy.gif'
+	};
+
+	// diagram stuff
 	$scope.diagramTitle = 'Solar Thermal System';
 	$scope.scale = true;
 	$scope.arrows = arrows;
-	$scope.diagram = [
-		buildingOutline,
-		pipes,
-		solarPanel,
-		heatExchanger,
-		heaters,
-		monitor,
-		labels
-	];
+	$scope.diagram = [buildingOutline, pipes, solarPanel, heatExchanger, heaters, monitor, labels];
 
 	// chart stuff
-	$scope.chartTitle = 'Solar Data';
-	$scope.yAxis = 'kwh';
-	$scope.xAxis = 'Date';
-	$scope.startDate = '2015-03-01';
-	$scope.endDate = '2015-03-07';
-	$scope.chartCtrl = {
+	$scope.pie = {
+		value: 110,
+		unit: 'kWh'
+	};
+	$scope.chart = {
+		title: 'Solar Data',
+		toggle: 0,
 		data: {
 	        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 	        datasets: [
@@ -266,31 +266,59 @@ app.controller('SolarCtrl', function($scope, Arrow, solarData) {
 	        ]
 	    }
 	};
-	$scope.update = function () {
+
+	if (d.getMonth() > 9) {
+		$scope.today = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+	} else {
+		$scope.today = d.getFullYear() + '-0' + (d.getMonth()+1) + '-' + d.getDate();
+	}
+
+	$scope.monthly = {
+		months: [
+			{name:'January', id: 1},
+			{name:'February', id: 2},
+			{name:'March', id: 3},
+			{name:'April', id: 4},
+			{name:'May', id: 5},
+			{name:'June', id: 6},
+			{name:'July', id: 7},
+			{name:'August', id: 8},
+			{name:'September', id: 9},
+			{name:'October', id: 10},
+			{name:'November', id: 11},
+			{name:'December', id: 12},
+	    ],
+	    startYear: 2015,
+	    endYear: 2015
+	}
+
+	$scope.startDate = '2015-03-01';
+	$scope.endDate = '2015-03-07';
+	$scope.updateChart = function () {
 		var newLabels = [],
 			newData = [],
 			data = solarData.dailyReadings($scope.startDate, $scope.endDate)
 			
 		data.$promise.then(function (response) {
-			response.dailyReadings.forEach(function (e, i, arr) {
-				newLabels.push(e.dateRead.split(' ')[0]);
-				newData.push(e.kwh);
+			response.dailyReadings.forEach(function (row, i, arr) {
+				newLabels.push(row.dateRead.split(' ')[0]);
+				newData.push(row['kwh']);
 			});
 
-			$scope.chartCtrl.data.labels = newLabels;
-			$scope.chartCtrl.data.datasets[0].data = newData;
-			$scope.chartCtrl.update();
+			$scope.chart.data.labels = newLabels;
+			$scope.chart.data.datasets[0].data = newData;
+			$scope.chart.update();
 		}, function (response) {
-			console.log('it broke');
+			console.log('API Call failed.');
 		});
 	};
 
     $scope.toggle = {
-		hideChart: false,
+		showDiagram: false,
 		content: 'See Diagram',
 		swap: function () {
-	    	this.hideChart = !this.hideChart;
-	    	if (this.hideChart) {
+	    	this.showDiagram = !this.showDiagram;
+	    	if (this.showDiagram) {
 	    		this.content = 'See Data';
 	    	} else {
 	    		this.content = 'See Diagram';

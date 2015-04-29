@@ -12,6 +12,18 @@ app.factory('solarData', function ($resource) {
 	};
 })
 
+.factory('photoData', function ($resource) {
+    return {
+        data: [12, 13, 14, 15, 20, 50, 60]
+    };
+})
+
+.factory('geoData', function ($resource) {
+    return {
+        data: [12, 13, 14, 15, 20, 50, 60]
+    };
+})
+
 .factory('Arrow', function () {
     return {
         // arrow constructor

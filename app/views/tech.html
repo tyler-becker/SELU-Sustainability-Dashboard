@@ -2,78 +2,73 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div id="side-bar" class="sub">
-				<div class="col-md-12">
-					<h2>Energy Rate</h2>
-					<canvas doughnut-chart class="center" width="200" height="200"></canvas>
-					<p>{{weather.text}}</p>
-					<img src="{{weather.src}}" />
-	            	<span><img src="./images/wuLogo.png" alt="Weather Underground" width="200" height="48" /></span>
-					<br />
-					<br />
-					<button class="btn btn-success center" type="button" ng-click="toggle.swap()">{{toggle.content}}</button>
-					<br />
-				</div>
-				<div class="row" ng-hide="chart.toggle!==0">
-					<div class="col-md-6">
-						<br />
-						<label for="current-date">Choose Date</label>
-					</div>
-					<div class="col-md-6 inputs">
-						<br />
-						<input date-picker name="current-date" ng-model="today" type="datetime"></input>
-					</div>
-				</div>
-				<div class="row" ng-hide="chart.toggle!==1">
-					<div class="col-md-6 inputs">
-						<label for="start-date">Start Date</label>
-						<br />
-						<input date-picker name="start-date" ng-model="startDate" type="datetime"></input>
-					</div>
-					<div class="col-md-6 inputs">
-						<label for="end-date">End Date</label>
-						<br />
-						<input date-picker name="end-date" ng-model="endDate" type="datetime"></input>
-					</div>
-				</div>
-				<div class="row" ng-hide="chart.toggle!==2">
-					<div class="col-md-6 inputs">
-						<label for="start-month">Start Month</label>
-						<br />
-						<select ng-model="startMonth" ng-options="month.name for month in monthly.months">
-							<option>Select start Month</option>
-						</select>
-						<br />
-					    <input name="start-month-year" ng-model="monthly.startYear" type="text"></input>
-					</div>
-					<div class="col-md-6 inputs">
-						<label for="end-month">End Month</label>
-						<br />
-						<select ng-model="endMonth" ng-options="month.name for month in monthly.months">
-					    	<option>Select end Month</option>
-					    </select>
-					    <br />
-					    <input name="end-month-year" ng-model="monthly.endYear" type="text"></input>
-					</div>
-				</div>
 				<div class="row">
-					<div class="col-md-6 inputs">
+					<div class="col-md-12">
+						<h2>Energy Rate</h2>
+						<canvas doughnut-chart class="center" width="200" height="200"></canvas>
+						<p>{{weather.text}}</p>
+						<img src="{{weather.src}}" alt="weather" />
+		            	<span><img src="./images/wuLogo.png" alt="Weather Underground" width="200" height="48" /></span>
 						<br />
+						<br />
+						<div class="btn-group center">
+							<button class="btn btn-success" type="button" ng-click="toggle.swap()">{{toggle.content}}</button>
+							<button class="btn btn-success" type="button" ng-click="updateChart()">Update Chart</button>
+						</div>
+					</div>
+				</div>
+				<br />
+				<div class="row ">
+					<div class="col-md-6">
 						<label for="energy-unit">Energy Unit</label>
 					</div>
-					<div class="col-md-6 inputs">
-						<br />
-						<select name="energy-unit">
-							<option value="kWh">kWh</option>
-							<option value="bTu">bTu</option>
-						</select>
+					<div class="col-md-6">
+						<select class="form-control" name="energy-unit" ng-model="energy.selected" ng-options="unit for unit in energy.units"></select>
 					</div>
 				</div>
-				<div class="col-md-12">
-					<div class="center">
-						<button class="btn btn-success" type="button" ng-click="chart.toggle=0" ng-disabled="chart.toggle===0">Current Readings</button>
-						<button class="btn btn-success" type="button" ng-click="chart.toggle=1" ng-disabled="chart.toggle===1">Daily Readings</button>
-						<button class="btn btn-success" type="button" ng-click="chart.toggle=2" ng-disabled="chart.toggle===2">Monthly Readings</button>
-						<button class="btn btn-primary" type="button" ng-click="updateChart()">Update Chart</button>
+				<br />
+				<div class="row form-div" ng-hide="chart.toggle!==0">
+					<br />
+					<div class="col-md-6">
+						<label for="current-date">Choose Date</label>
+					</div>
+					<div class="col-md-6">
+						<input date-picker class="form-control" name="current-date" ng-model="today" type="datetime"></input>
+					</div>
+				</div>
+				<div class="row form-div" ng-hide="chart.toggle!==1">
+					<div class="col-md-6">
+						<label for="start-date">Start Date</label>
+						<br />
+						<input date-picker class="form-control" name="start-date" ng-model="startDate" type="datetime"></input>
+					</div>
+					<div class="col-md-6">
+						<label for="end-date">End Date</label>
+						<br />
+						<input date-picker class="form-control" name="end-date" ng-model="endDate" type="datetime"></input>
+					</div>
+				</div>
+				<div class="row form-div" ng-hide="chart.toggle!==2">
+					<div class="col-md-6">
+						<label for="start-month">Start Month</label>
+						<br />
+						<select class="form-control" ng-model="startMonth" ng-options="month.name for month in monthly.months"></select>
+					</div>
+					<div class="col-md-6">
+						<label for="end-month">End Month</label>
+						<br />
+						<select class="form-control" ng-model="endMonth" ng-options="month.name for month in monthly.months"></select>
+					</div>
+				</div>
+				<br />
+				<br />
+				<div class="row">
+					<div class="col-md-12">
+						<div class="btn-group center">
+							<button class="btn btn-success" type="button" ng-click="chart.toggle=0" ng-disabled="chart.toggle===0">Current</button>
+							<button class="btn btn-success" type="button" ng-click="chart.toggle=1" ng-disabled="chart.toggle===1">Daily</button>
+							<button class="btn btn-success" type="button" ng-click="chart.toggle=2" ng-disabled="chart.toggle===2">Monthly</button>
+						</div>
 					</div>
 				</div>
 			</div>

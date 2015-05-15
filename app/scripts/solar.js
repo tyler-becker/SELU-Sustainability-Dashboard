@@ -273,6 +273,13 @@ app.controller('SolarCtrl', function($scope, Arrow, solarData) {
 		$scope.today = d.getFullYear() + '-0' + (d.getMonth()+1) + '-' + d.getDate();
 	}
 
+	$scope.energy = {
+		seleted: 'Choose Unit',
+		units: [
+			'kWh',
+			'bTu'
+		]
+	};
 	$scope.monthly = {
 		months: [
 			{name:'January', id: 1},
@@ -291,9 +298,11 @@ app.controller('SolarCtrl', function($scope, Arrow, solarData) {
 	    startYear: 2015,
 	    endYear: 2015
 	}
-
 	$scope.startDate = '2015-03-01';
 	$scope.endDate = '2015-03-07';
+	$scope.startMonth = 'Select Start Month';
+	$scope.endMonth = 'Select End Month';
+
 	$scope.updateChart = function () {
 		var newLabels = [],
 			newData = [],
@@ -319,7 +328,7 @@ app.controller('SolarCtrl', function($scope, Arrow, solarData) {
 		swap: function () {
 	    	this.showDiagram = !this.showDiagram;
 	    	if (this.showDiagram) {
-	    		this.content = 'See Data';
+	    		this.content = 'Chart Data';
 	    	} else {
 	    		this.content = 'See Diagram';
 	    	}

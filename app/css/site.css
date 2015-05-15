@@ -3,7 +3,7 @@
 -------------------------*/
 body {
 	background-image: url('../images/green_cup.png');
-    font-family: 'Bebas';
+    font: "Lucida Sans Roman", "Lucida Grande", sans-serif;
 }
 @font-face{
     font-family: Bebas;
@@ -14,19 +14,15 @@ body {
     src: url(fonts/Roboto-Thin.ttf);
 }
 header {
-	font-family: 'Roboto';
 	list-style-type: none;
 }
 footer {
-	font-family: 'Roboto';
     width: 98em;
 	margin: 0 auto;
 }
-h1, h2{
+h1, h2, h3 {
+    font-family: 'Bebas';
     margin-top: 0;
-}
-h3 {
-	font-family: 'Roboto';
 }
 ul {
     font-size: 1.5em;
@@ -74,11 +70,18 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 /*-----------------------
     MISC
 -------------------------*/
-#weather{
-    font-size: 1.2em;
-    padding-top: 1em;
-    color: black;
+
+.banner{
+    height: 8em;
+    background-image: url(../images/treeEdited.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: cover;
+    color: #f4f4f4;
 }
+.banner h1 {    background-color: rgba(0, 0, 0, 0.7);
+}
+
 .add-margin {
     margin-top: 5em;
 }
@@ -90,26 +93,31 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
     width: 75%;
     margin: 0 auto;
 }
-.inputs {
-    height: 4em;
+.right {
+    text-align: right;
 }
-.banner{
-    padding: 6% 2% 2%;
-    background-image: url(../images/treeEdited.png);
-    background-repeat: no-repeat;
-    background-position: left top;
-    background-size: cover;
-    color: #f4f4f4;
-}
-.banner-highlight {
-    background-color: rgba(0, 0, 0, 0.7);
+.form-div {
+    height: 3em;
 }
 .contact {
-    color: white;
+    color: black;
 }
 .img-resize {
     width: 20em;
     height: 20em;
+}
+.crop {
+    height: 300px;
+    width: 400px;
+    overflow: hidden;
+}
+.crop img {
+    margin: auto;
+    height: auto;
+    width: 400px;
+}
+.box-out {
+    height: 24em;
 }
 .chart {
     position: absolute;
